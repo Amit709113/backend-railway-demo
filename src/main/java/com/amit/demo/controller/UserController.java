@@ -25,18 +25,23 @@ public class UserController {
 	@PostMapping("/")
 	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
 		UserDto createUser = this.userService.createUser(userDto);
+		System.out.println("i am at post mapping "+userDto.toString());
 		return new ResponseEntity<UserDto>(createUser,HttpStatus.CREATED);
 	}
 	
 	@GetMapping("/{userId}")
 	public ResponseEntity<UserDto> getUserById(@PathVariable Integer userId){
 		UserDto user = this.userService.getUser(userId);
+
+		System.out.println("i am at get mapping "+user.toString());
 		return new ResponseEntity<UserDto>(user,HttpStatus.OK);
 	}
 	
 	@GetMapping("/")
 	public ResponseEntity<List<UserDto>> getAllUser(){
 		List<UserDto> allUser = this.userService.getAllUser();
+
+		System.out.println("i am at get all mapping ");
 		return new ResponseEntity<List<UserDto>>(allUser,HttpStatus.OK);
 	}
 	
