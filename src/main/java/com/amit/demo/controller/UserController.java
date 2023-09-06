@@ -21,7 +21,7 @@ import com.amit.demo.service.UserService;
 
 @RestController
 @RequestMapping("/api/demo/")
-@CrossOrigin(origins ="http://localhost:5173/**")
+@CrossOrigin(origins ="*")
 public class UserController {
 	
 	@Autowired
