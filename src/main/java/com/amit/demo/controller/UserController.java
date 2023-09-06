@@ -20,8 +20,8 @@ import com.amit.demo.payloads.UserDto;
 import com.amit.demo.service.UserService;
 
 @RestController
-@RequestMapping("/demo/api/")
-@CrossOrigin(origins ="*")
+@RequestMapping("/api/demo/")
+@CrossOrigin(origins ="http://localhost:5173/")
 public class UserController {
 	
 	@Autowired
