@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amit.demo.entity.User;
 import com.amit.demo.payloads.UserDto;
 import com.amit.demo.service.UserService;
 
@@ -40,9 +41,17 @@ public class UserController {
 	@GetMapping("/")
 	public ResponseEntity<List<UserDto>> getAllUser(){
 		List<UserDto> allUser = this.userService.getAllUser();
+		UserDto user=new UserDto();
+		user.setEmail("preity@gmail.com");
+		user.setName("priety singh");
+		UserDto createUser = this.userService.createUser(user);
+		
+		
 
 		System.out.println("i am at get all mapping ");
-		return new ResponseEntity<List<UserDto>>(allUser,HttpStatus.OK);
+		
+		
+		return new ResponseEntity<List<UserDto>>(allUser,HttpStatus.CREATED);
 	}
 	
 	
