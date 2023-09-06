@@ -9,5 +9,6 @@ public interface UserService {
 	UserDto createUser (UserDto userDto);
 	UserDto getUser(int id);
 	List<UserDto> getAllUser();
+	void deleteUser(Integer userId);
 
 }

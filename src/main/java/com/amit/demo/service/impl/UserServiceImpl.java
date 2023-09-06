@@ -1,6 +1,6 @@
 package com.amit.demo.service.impl;
 
-import java.util.List;import java.util.stream.Collector;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -39,6 +39,16 @@ public class UserServiceImpl implements UserService {
 		List<User> list = this.userRepo.findAll();
 		List<UserDto> collect = list.stream().map((u)->this.model.map(u, UserDto.class)).collect(Collectors.toList());
 		return collect;
+	}
+
+	@Override
+	public void deleteUser(Integer userId) {
+		
+		User user=this.userRepo.findById(userId).orElseThrow();
+		this.userRepo.delete(user);
+		
+		
+		
 	}
 
 }
