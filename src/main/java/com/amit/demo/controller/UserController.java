@@ -22,7 +22,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
-	@PostMapping("/")
+	@PostMapping("/amit/")
 	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
 		UserDto createUser = this.userService.createUser(userDto);
 		System.out.println("i am at post mapping "+userDto.toString());
