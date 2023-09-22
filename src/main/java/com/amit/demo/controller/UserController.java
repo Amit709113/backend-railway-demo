@@ -26,9 +26,42 @@ import com.amit.demo.service.UserService;
 @CrossOrigin(origins ="*")
 public class UserController {
 	
-	@GetMapping
-	ResponseEntity<String> methodTesting(){
-		return new ResponseEntity<String>(new String("put mapping is working"),HttpStatus.OK);
+	
+	@Autowired
+	private UserService userService;
+	
+	@PostMapping("/")
+	public ResponseEntity<UserDto> createUser(@RequestBody UserDto userDto){
+		UserDto createUser = this.userService.createUser(userDto);
+		return new ResponseEntity<UserDto>(createUser,HttpStatus.CREATED);
 	}
+	
+	@GetMapping("/{userId}")
+	public ResponseEntity<UserDto> getUserById(@PathVariable Integer userId){
+		UserDto user = this.userService.getUser(userId);
+
+		return new ResponseEntity<UserDto>(user,HttpStatus.OK);
+	}
+	
+	@GetMapping("/")
+	public ResponseEntity<List<UserDto>> getAllUser(){
+		System.out.println("i have been called");
+		List<UserDto> allUser = this.userService.getAllUser();
+		
+		return new ResponseEntity<List<UserDto>>(allUser,HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/{userId}")
+	public ResponseEntity<?> deleteUser(@PathVariable Integer userId){
+		this.userService.deleteUser(userId);
+		Map.Entry<String, String> entry = Map.entry("message ", " user is deleted successfully ");
+		return new ResponseEntity<>(entry,HttpStatus.OK);
+	}
+	
+//	@GetMapping
+//	ResponseEntity<String> methodTesting(){
+//		return new ResponseEntity<String>(new String("put mapping is working"),HttpStatus.OK);
+//	}
+	
 	
 }
