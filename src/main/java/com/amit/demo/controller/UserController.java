@@ -42,6 +42,7 @@ public class UserController {
 	
 	@GetMapping("/")
 	public ResponseEntity<List<UserDto>> getAllUser(){
+		System.out.println("i have been called");
 		List<UserDto> allUser = this.userService.getAllUser();
 		
 		return new ResponseEntity<List<UserDto>>(allUser,HttpStatus.OK);
